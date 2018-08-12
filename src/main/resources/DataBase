@@ -1,0 +1,23 @@
+CREATE TABLE Author (
+	Author_id INTEGER NOT NULL,
+	First_Name TEXT(50) NOT NULL,
+	Last_Name TEXT(50) NOT NULL,
+	Year_of_Birth TEXT(4) NOT NULL,
+	CONSTRAINT Author_PK PRIMARY KEY (Author_id)
+);
+
+CREATE TABLE Genre (
+	Genre_id INTEGER NOT NULL,
+	Genre TEXT(50) NOT NULL,
+	CONSTRAINT Genre_PK PRIMARY KEY (Genre_id)
+);
+
+CREATE TABLE `Book` (
+	`Book_id`	INTEGER NOT NULL,
+	`Title`	TEXT ( 50 ) NOT NULL,
+	`Publish_Year`	TEXT ( 4 ),
+	`Genre_id`	INTEGER NOT NULL,
+	`Author_id`	INTEGER NOT NULL,
+	CONSTRAINT `Book_PK` PRIMARY KEY(`Book_id`),
+	FOREIGN KEY(`Genre_id`) REFERENCES `Genre`(`Genre_id`) ON INSERT
+);
