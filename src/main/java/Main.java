@@ -2,8 +2,9 @@
 public class Main {
 
     public static void main(String[] args) {
-        SQLconnection conn = new SQLconnection();
-        conn.connect();
+        Query query = new Query();
+        query.selectAll();
 
     }
 }
+
