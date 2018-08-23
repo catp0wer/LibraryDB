@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -5,7 +6,16 @@ import java.sql.SQLException;
     public class SQLconnection {
         public static Connection connect() {
             // SQLite connection
-            String url = "jdbc:sqlite:D:/Git projects/DB_library/Library.db";
+
+            GetProperties prop = new GetProperties();
+            String url = null;
+            //reading the path from env.properties
+            try {
+                url = prop.getProp("PATH");
+                System.out.println(url);
+            } catch (IOException e) {
+               e.printStackTrace();
+           }
             Connection conn = null;
             try {
                 conn = DriverManager.getConnection(url);
